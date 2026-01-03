@@ -1,32 +1,20 @@
 import "package:flutter/material.dart";
 import 'package:wanderlustventures_app/screens/checkout.dart';
 
-class PaymentDetails extends StatefulWidget {
-  const PaymentDetails({Key? key}) : super(key: key);
+class CardDetails extends StatelessWidget {
+  const CardDetails({super.key});
 
-  @override
-  _PaymentDetailsState createState() => _PaymentDetailsState();
-}
-
-class CardDetails extends StatefulWidget {
-  const CardDetails({Key? key}) : super(key: key);
-
-  @override
-  _CardDetailsState createState() => _CardDetailsState();
-}
-
-class _CardDetailsState extends State<CardDetails> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Card', style: TextStyle(fontWeight: FontWeight.bold)),
-        SizedBox(height: 16),
+        const Text('Card', style: TextStyle(fontWeight: FontWeight.bold)),
+        const SizedBox(height: 16),
+
         TextField(
-          keyboardType: TextInputType.name,
           decoration: InputDecoration(
             hintText: 'Card Number',
-            hintStyle: TextStyle(fontSize: 15),
             filled: true,
             fillColor: const Color(0xFFC5E9FC),
             prefixIcon: Icon(Icons.credit_card),
@@ -34,87 +22,97 @@ class _CardDetailsState extends State<CardDetails> {
           ),
         ),
 
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
 
         Row(
           children: [
-            TextField(
-              keyboardType: TextInputType.name,
-              decoration: InputDecoration(
-                constraints: BoxConstraints(maxWidth: 180),
-                hintText: 'Expire date',
-                hintStyle: TextStyle(fontSize: 15),
-                filled: true,
-                fillColor: const Color(0xFFC5E9FC),
-                prefixIcon: Icon(Icons.calendar_today),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(22),
+            Expanded(
+              child: TextField(
+                decoration: InputDecoration(
+                  hintText: 'Expire date',
+                  filled: true,
+                  fillColor: const Color(0xFFC5E9FC),
+                  prefixIcon: Icon(Icons.calendar_today),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(22),
+                  ),
                 ),
               ),
             ),
-
-            Spacer(),
-
-            TextField(
-              keyboardType: TextInputType.name,
-              decoration: InputDecoration(
-                constraints: BoxConstraints(maxWidth: 180),
-                hintText: 'CVV',
-                hintStyle: TextStyle(fontSize: 15),
-                filled: true,
-                fillColor: const Color(0xFFC5E9FC),
-                prefixIcon: Icon(Icons.credit_card_outlined),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(22),
+            const SizedBox(width: 12),
+            Expanded(
+              child: TextField(
+                decoration: InputDecoration(
+                  hintText: 'CVV',
+                  filled: true,
+                  fillColor: const Color(0xFFC5E9FC),
+                  prefixIcon: Icon(Icons.credit_card_off_outlined),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(22),
+                  ),
                 ),
               ),
             ),
           ],
         ),
 
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
+
         Column(
-          children: [
+          children: const [
             Row(children: [Text('Number of people'), Spacer(), Text('1')]),
             Row(children: [Text('Number of days'), Spacer(), Text('1')]),
             Row(children: [Text('Total'), Spacer(), Text('\$196')]),
           ],
-        ),
-        SizedBox(height: 27),
-        ElevatedButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => Checkout()),
-            );
-          },
-          style: ElevatedButton.styleFrom(
-            backgroundColor: const Color(0xFF0498E5),
-          ),
-          child: Text(
-            'Pay Now',
-            style: TextStyle(color: Colors.black, fontWeight: FontWeight.w600),
-          ),
         ),
       ],
     );
   }
 }
 
-class _PaymentDetailsState extends State<PaymentDetails> {
+class PaymentDetails extends StatelessWidget {
+  const PaymentDetails({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFD7F0FD),
       appBar: AppBar(
-        backgroundColor: Color(0xFFD7F0FD),
-        leading: Icon(Icons.menu),
+        backgroundColor: const Color(0xFFD7F0FD),
+        leading: const Icon(Icons.menu),
       ),
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: SafeArea(
-          child: SingleChildScrollView(
-            child: Column(children: [const CardDetails()]),
+
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(16),
+          child: const CardDetails(),
+        ),
+      ),
+
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
+        child: SizedBox(
+          height: 46,
+          child: ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Checkout()),
+              );
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color(0xFF0498E5),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+            ), 
+            child: const Text(
+              'Pay Now',
+              style: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold
+              ),
+            ),           
           ),
         ),
       ),

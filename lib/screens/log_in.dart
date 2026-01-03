@@ -3,15 +3,17 @@ import 'package:wanderlustventures_app/screens/sign_up.dart';
 import 'package:wanderlustventures_app/screens/home.dart';
 
 class LogIn extends StatefulWidget {
+  const LogIn({super.key});
+  
   @override
-  _LogInState createState() => _LogInState();
+  State<LogIn> createState() => _LogInState();
 }
 
 class LogInForm extends StatefulWidget {
-  const LogInForm({Key? key}) : super(key: key);
+  const LogInForm({super.key});
 
   @override
-  _LogInFormState createState() => _LogInFormState();
+  State<LogInForm> createState() => _LogInFormState();
 }
 
 class _LogInFormState extends State<LogInForm> {
@@ -125,7 +127,7 @@ class _LogInFormState extends State<LogInForm> {
               children: [
                 Text("Don't have an account yet?"),
                 SizedBox(width: 5),
-                // making the sign up navigbke
+                // making the sign up navigable
                 GestureDetector(
                   onTap: () {
                     Navigator.push(

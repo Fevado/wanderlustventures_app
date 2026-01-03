@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:wanderlustventures_app/screens/details.dart';
 
 class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+  const Home({super.key});
 
   @override
-  _HomeState createState() => _HomeState();
+  State<Home> createState() => _HomeState();
 }
 
 class Search extends StatefulWidget {
-  const Search({Key? key}) : super(key: key);
+  const Search({super.key});
 
   @override
-  _SearchState createState() => _SearchState();
+  State<Search> createState() => _SearchState();
 }
 
 class _SearchState extends State<Search> {
@@ -48,10 +48,10 @@ class _SearchState extends State<Search> {
 }
 
 class HomeDetail extends StatefulWidget {
-  const HomeDetail({Key? key}) : super(key: key);
+  const HomeDetail({super.key});
 
   @override
-  _HomeDetailState createState() => _HomeDetailState();
+  State<HomeDetail> createState() => _HomeDetailState();
 }
 
 class _HomeDetailState extends State<HomeDetail> {

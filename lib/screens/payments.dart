@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:wanderlustventures_app/screens/payment_details.dart';
 
 class Payments extends StatefulWidget {
-  const Payments({Key? key}) : super(key: key);
+  const Payments({super.key});
 
   @override
-  _PaymentsState createState() => _PaymentsState();
+  State<Payments> createState() => _PaymentsState();
 }
 
 class PaymentOptions extends StatefulWidget {
-  const PaymentOptions({Key? key}) : super(key: key);
+  const PaymentOptions({super.key});
 
   @override
-  _PaymentOptionsState createState() => _PaymentOptionsState();
+  State<PaymentOptions> createState() => _PaymentOptionsState();
 }
 
 class _PaymentOptionsState extends State<PaymentOptions> {
@@ -22,7 +22,11 @@ class _PaymentOptionsState extends State<PaymentOptions> {
       children: [
         Text('Make Payment', style: TextStyle(fontWeight: FontWeight.bold)),
         Text('Pay with:', style: TextStyle(fontWeight: FontWeight.w600)),
-        ElevatedButton(
+
+        SizedBox(
+          width: double.infinity,
+          height: 46,
+        child: ElevatedButton(
           onPressed: () {},
           style: ElevatedButton.styleFrom(
             backgroundColor: const Color(0xFF0498E5),
@@ -32,8 +36,13 @@ class _PaymentOptionsState extends State<PaymentOptions> {
             style: TextStyle(color: Colors.black, fontWeight: FontWeight.w600),
           ),
         ),
+        ),
         SizedBox(height: 16),
-        ElevatedButton(
+
+        SizedBox(
+          width: double.infinity,
+          height: 46,
+        child: ElevatedButton(
           onPressed: () {
             Navigator.push(
               context,
@@ -48,8 +57,13 @@ class _PaymentOptionsState extends State<PaymentOptions> {
             style: TextStyle(color: Colors.black, fontWeight: FontWeight.w600),
           ),
         ),
+        ),
         SizedBox(height: 16.0),
-        ElevatedButton(
+
+        SizedBox(
+          width: double.infinity,
+          height: 46,
+        child: ElevatedButton(
           onPressed: () {},
           style: ElevatedButton.styleFrom(
             backgroundColor: const Color(0xFF0498E5),
@@ -58,6 +72,7 @@ class _PaymentOptionsState extends State<PaymentOptions> {
             'Crypto',
             style: TextStyle(color: Colors.black, fontWeight: FontWeight.w600),
           ),
+        ),
         ),
       ],
     );
@@ -77,7 +92,10 @@ class _PaymentsState extends State<Payments> {
         padding: EdgeInsets.all(16),
         child: SafeArea(
           child: SingleChildScrollView(
-            child: Column(children: [const PaymentOptions()]),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [const PaymentOptions()]),
           ),
         ),
       ),

@@ -2,15 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:wanderlustventures_app/screens/log_in.dart';
 
 class SignUp extends StatefulWidget {
+  const SignUp({super.key});
+  
   @override
-  _SignUpState createState() => _SignUpState();
+  State<SignUp> createState() => _SignUpState();
 }
 
 class SignUpForm extends StatefulWidget {
-  const SignUpForm({Key? key}) : super(key: key);
+  const SignUpForm({super.key});
 
   @override
-  _SignUpFormState createState() => _SignUpFormState();
+  State<SignUpForm> createState() => _SignUpFormState();
 }
 
 class _SignUpFormState extends State<SignUpForm> {
@@ -128,9 +130,9 @@ class _SignUpFormState extends State<SignUpForm> {
                 MaterialPageRoute(builder: (context) => LogIn()),
               );
             },
-             style: ElevatedButton.styleFrom(
+            style: ElevatedButton.styleFrom(
               backgroundColor: const Color(0xFF0498E5),
-             ),
+            ),
             child: Text(
               'Sign Up',
               style: TextStyle(

@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:wanderlustventures_app/screens/payments.dart';
 
 class Details extends StatefulWidget {
-  const Details({Key? key}) : super(key: key);
+  const Details({super.key});
 
   @override
-  _DetailsState createState() => _DetailsState();
+  State<Details> createState() => _DetailsState();
 }
 
 class DetailImages extends StatefulWidget {
-  const DetailImages({Key? key}) : super(key: key);
+  const DetailImages({super.key});
 
   @override
-  _DetailImagesState createState() => _DetailImagesState();
+  State<DetailImages> createState() => _DetailImagesState();
 }
 
 class _DetailImagesState extends State<DetailImages> {
@@ -38,10 +38,10 @@ class _DetailImagesState extends State<DetailImages> {
 }
 
 class DetailDescription extends StatefulWidget {
-  const DetailDescription({Key? key}) : super(key: key);
+  const DetailDescription({super.key});
 
   @override
-  _DetailDescriptionState createState() => _DetailDescriptionState();
+  State<DetailDescription> createState() => _DetailDescriptionState();
 }
 
 class _DetailDescriptionState extends State<DetailDescription> {
@@ -75,19 +75,36 @@ class _DetailDescriptionState extends State<DetailDescription> {
   }
 }
 
-class DetailButton extends StatefulWidget {
-  const DetailButton({Key? key}) : super(key: key);
 
-  @override
-  _DetailButtonState createState() => _DetailButtonState();
-}
-
-class _DetailButtonState extends State<DetailButton> {
+class _DetailsState extends State<Details> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        ElevatedButton(
+    return Scaffold(
+      backgroundColor: const Color(0xFFD7F0FD),
+      appBar: AppBar(
+        leading: Icon(Icons.menu),
+        backgroundColor: const Color(0xFFD7F0FD),
+      ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.all(16),
+            child: Column(
+              children: [
+                const DetailImages(),
+                SizedBox(height: 16,),
+                const DetailDescription()
+              ],
+            ),
+            ),
+        )),
+
+        bottomNavigationBar: Padding(
+          padding: EdgeInsetsGeometry.fromLTRB(16, 8, 16, 24),
+          child: SizedBox(
+      width: double.infinity,
+      height: 46,
+        child: ElevatedButton(
           onPressed: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) => Payments()));
           },
@@ -99,35 +116,8 @@ class _DetailButtonState extends State<DetailButton> {
             style: TextStyle(color: Colors.black, fontWeight: FontWeight.w600),
           ),
         ),
-      ],
-    );
-  }
-}
-
-class _DetailsState extends State<Details> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFFD7F0FD),
-      appBar: AppBar(
-        leading: Icon(Icons.menu),
-        backgroundColor: const Color(0xFFD7F0FD),
-      ),
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: SafeArea(
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                const DetailImages(), 
-                SizedBox(height: 16.0),
-                const DetailDescription(),
-                SizedBox(height: 16.0,),
-                const DetailButton()], 
-            ),
-          ),
-        ),
-      ),
+    ),          
+           ),
     );
   }
 }
