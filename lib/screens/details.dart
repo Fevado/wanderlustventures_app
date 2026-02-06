@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:wanderlustventures_app/models/destination.dart';
 import 'package:wanderlustventures_app/screens/payments.dart';
 
 class Details extends StatefulWidget {
-  const Details({super.key});
+  final Destination destination;
+  const Details({super.key, required this.destination});
 
   @override
   State<Details> createState() => _DetailsState();
@@ -75,7 +77,6 @@ class _DetailDescriptionState extends State<DetailDescription> {
   }
 }
 
-
 class _DetailsState extends State<Details> {
   @override
   Widget build(BuildContext context) {
@@ -92,32 +93,39 @@ class _DetailsState extends State<Details> {
             child: Column(
               children: [
                 const DetailImages(),
-                SizedBox(height: 16,),
-                const DetailDescription()
+                SizedBox(height: 16),
+                const DetailDescription(),
               ],
             ),
-            ),
-        )),
-
-        bottomNavigationBar: Padding(
-          padding: EdgeInsetsGeometry.fromLTRB(16, 8, 16, 24),
-          child: SizedBox(
-      width: double.infinity,
-      height: 46,
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => Payments()));
-          },
-          style: ElevatedButton.styleFrom(
-            backgroundColor: const Color(0xFF0498E5),
-          ),
-          child: Text(
-            'Book trip',
-            style: TextStyle(color: Colors.black, fontWeight: FontWeight.w600),
           ),
         ),
-    ),          
-           ),
+      ),
+
+      bottomNavigationBar: Padding(
+        padding: EdgeInsetsGeometry.fromLTRB(16, 8, 16, 24),
+        child: SizedBox(
+          width: double.infinity,
+          height: 46,
+          child: ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Payments()),
+              );
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color(0xFF0498E5),
+            ),
+            child: Text(
+              'Book trip',
+              style: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
