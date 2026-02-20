@@ -1,21 +1,3 @@
-# wanderlustventures_app
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
-
 # WanderlustVentures - Travel Booking App
 A Flutter-based mobile application for discovering and booking travel destinations. Users can explore destinations, view details, select trip duration, choose payment methods, and complete bookings.
 
@@ -38,70 +20,70 @@ lib/
     
 ## Features Implemented
 1. Home Screen (home.dart)
-  Data-driven destination listing using ListView.builder
-
-  Reusable DestinationCard widget
-
-  Search functionality with real-time filtering
-
-  Bookmark/unbookmark destinations
-
-  Navigation to details screen with selected destination
+      Data-driven destination listing using ListView.builder
+    
+      Reusable DestinationCard widget
+    
+      Search functionality with real-time filtering
+    
+      Bookmark/unbookmark destinations
+    
+      Navigation to details screen with selected destination
 
 2. Details Screen (details.dart)
-  Receives Destination object from home screen
-
-  Displays destination images and descriptions
-
-  Bookmark functionality with callback pattern
-
-  "Book Trip" button navigates to payments
+      Receives Destination object from home screen
+    
+      Displays destination images and descriptions
+    
+      Bookmark functionality with callback pattern
+    
+      "Book Trip" button navigates to payments
 
 3. Payments Screen (payments.dart)
-  Receives selected destination from details
-
-  Days selector (+ / - buttons) with minimum 1 day
-
-  Real-time total price calculation (pricePerDay × days)
-
-  Payment method selection (PayPal, Card, Crypto)
-
-  Visual feedback for selected payment method
-
-  Continue button appears only after method selection
-
-  Passes complete data to payment details:
-
-  Destination object
-
-  Selected payment method
-
-  Number of days
-
-  Total price
+      Receives selected destination from details
+    
+      Days selector (+ / - buttons) with minimum 1 day
+    
+      Real-time total price calculation (pricePerDay × days)
+    
+      Payment method selection (PayPal, Card, Crypto)
+    
+      Visual feedback for selected payment method
+    
+      Continue button appears only after method selection
+    
+      Passes complete data to payment details:
+    
+      Destination object
+    
+      Selected payment method
+    
+      Number of days
+    
+      Total price
 
 4. Payment Details Screen (payment_details.dart)
-  Conditional rendering based on payment method:
-
-  CardDetails for credit/debit cards
-
-  PayPalDetails for PayPal payments
-
-  CryptoDetails for cryptocurrency
-
-  (M-Pesa ready for integration)
-
-  All payment forms receive:
-
-   Destination information
-
-   Number of days
-
-   Total price
-
-  No hardcoded values - all data passed from previous screens
-
-  "Pay Now" button navigates to checkout with complete booking data
+      Conditional rendering based on payment method:
+    
+      CardDetails for credit/debit cards
+    
+      PayPalDetails for PayPal payments
+    
+      CryptoDetails for cryptocurrency
+    
+      (M-Pesa ready for integration)
+    
+      All payment forms receive:
+    
+       Destination information
+    
+       Number of days
+    
+       Total price
+    
+      No hardcoded values - all data passed from previous screens
+    
+      "Pay Now" button navigates to checkout with complete booking data
 
 5. Data Model (destination.dart)
 `
