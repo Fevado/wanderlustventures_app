@@ -1,91 +1,69 @@
 import "package:flutter/material.dart";
 import 'package:wanderlustventures_app/screens/checkout.dart';
-
-class CardDetails extends StatelessWidget {
-  const CardDetails({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Text('Card', style: TextStyle(fontWeight: FontWeight.bold)),
-        const SizedBox(height: 16),
-
-        TextField(
-          decoration: InputDecoration(
-            hintText: 'Card Number',
-            filled: true,
-            fillColor: const Color(0xFFC5E9FC),
-            prefixIcon: Icon(Icons.credit_card),
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(22)),
-          ),
-        ),
-
-        const SizedBox(height: 20),
-
-        Row(
-          children: [
-            Expanded(
-              child: TextField(
-                decoration: InputDecoration(
-                  hintText: 'Expire date',
-                  filled: true,
-                  fillColor: const Color(0xFFC5E9FC),
-                  prefixIcon: Icon(Icons.calendar_today),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(22),
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(width: 12),
-            Expanded(
-              child: TextField(
-                decoration: InputDecoration(
-                  hintText: 'CVV',
-                  filled: true,
-                  fillColor: const Color(0xFFC5E9FC),
-                  prefixIcon: Icon(Icons.credit_card_off_outlined),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(22),
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-
-        const SizedBox(height: 20),
-
-        Column(
-          children: const [
-            Row(children: [Text('Number of people'), Spacer(), Text('1')]),
-            Row(children: [Text('Number of days'), Spacer(), Text('1')]),
-            Row(children: [Text('Total'), Spacer(), Text('\$196')]),
-          ],
-        ),
-      ],
-    );
-  }
-}
+import 'package:wanderlustventures_app/models/destination.dart';
+import 'package:wanderlustventures_app/widgets/crypto_details.dart';
+import 'package:wanderlustventures_app/widgets/mpesa_details.dart';
+import 'package:wanderlustventures_app/widgets/paypal_details.dart';
+import 'package:wanderlustventures_app/widgets/card_details.dart';
 
 class PaymentDetails extends StatelessWidget {
-  const PaymentDetails({super.key});
+  final Destination destination;
+  final String paymentMethod;
+  final int numberOfDays;
+  final double totalPrice;
+
+  const PaymentDetails({
+    super.key,
+    required this.destination,
+    required this.paymentMethod,
+    required this.numberOfDays,
+    required this.totalPrice,
+  });
 
   @override
   Widget build(BuildContext context) {
+    // decide which idget to show based on payment method
+    Widget paymentForm;
+
+    if (paymentMethod == 'card') {
+      paymentForm = CardDetails(
+        destination: destination,
+        numberOfDays: numberOfDays,
+        totalPrice: totalPrice,
+      );
+    } else if (paymentMethod == 'paypal') {
+      paymentForm = PaypalDetails(
+        destination: destination,
+        numberOfDays: numberOfDays,
+        totalPrice: totalPrice,
+      );
+    } else if (paymentMethod == 'crypto') {
+      paymentForm = CryptoDetails(
+        destination: destination,
+        numberOfDays: numberOfDays,
+        totalPrice: totalPrice,
+      );
+    } else if (paymentMethod == 'm-pesa') {
+      paymentForm = MpesaDetails(
+        destination: destination,
+        numberOfDays: numberOfDays,
+        totalPrice: totalPrice,
+      );
+    } else {
+      paymentForm = Center(child: Text('Payment method not supported'));
+    }
+
     return Scaffold(
       backgroundColor: const Color(0xFFD7F0FD),
       appBar: AppBar(
         backgroundColor: const Color(0xFFD7F0FD),
-        leading: const Icon(Icons.menu),
+        title: Text('Pay with ${paymentMethod.toUpperCase()}'),
       ),
 
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(16),
-          child: const CardDetails(),
+          child: paymentForm,
         ),
       ),
 
@@ -97,7 +75,14 @@ class PaymentDetails extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Checkout()),
+                MaterialPageRoute(
+                  builder: (context) => Checkout(
+                    destination: destination,
+                    paymentMethod: paymentMethod,
+                    numberOfDays: numberOfDays,
+                    totalPrice: totalPrice,
+                  ),
+                ),
               );
             },
             style: ElevatedButton.styleFrom(
@@ -105,14 +90,14 @@ class PaymentDetails extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
               ),
-            ), 
-            child: const Text(
-              'Pay Now',
+            ),
+            child: Text(
+              'Pay Now with ${paymentMethod.toUpperCase()}',
               style: TextStyle(
                 color: Colors.black,
-                fontWeight: FontWeight.bold
+                fontWeight: FontWeight.bold,
               ),
-            ),           
+            ),
           ),
         ),
       ),

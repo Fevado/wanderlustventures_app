@@ -10,43 +10,48 @@ class Details extends StatefulWidget {
   State<Details> createState() => _DetailsState();
 }
 
-class DetailImages extends StatefulWidget {
-  const DetailImages({super.key});
+class DetailImages extends StatelessWidget {
+  final Destination destination;
+  final VoidCallback onBookmarkPressed;
+  const DetailImages({
+    super.key,
+    required this.destination,
+    required this.onBookmarkPressed,
+  });
 
-  @override
-  State<DetailImages> createState() => _DetailImagesState();
-}
-
-class _DetailImagesState extends State<DetailImages> {
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Image.asset('assets/images/maasai.jpg', fit: BoxFit.fitWidth),
+        Image.asset(destination.imagePath, fit: BoxFit.fitWidth),
         Row(
           children: [
-            Text("Maasai Mara", style: TextStyle(fontWeight: FontWeight.bold)),
+            Text(
+              destination.name,
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
             Spacer(),
-            Icon(Icons.bookmark),
+            IconButton(
+              icon: Icon(
+                destination.isBookmarked
+                    ? Icons.bookmark
+                    : Icons.bookmark_border,
+              ),
+              onPressed: onBookmarkPressed,
+            ),
           ],
         ),
-        Text(
-          'The beautiful Maa culture. Get to interact and learn about the Maa people and their amazing culture.',
-        ),
+        Text(destination.description),
       ],
     );
   }
 }
 
-class DetailDescription extends StatefulWidget {
-  const DetailDescription({super.key});
+class DetailDescription extends StatelessWidget {
+  final Destination destination;
+  const DetailDescription({super.key, required this.destination});
 
-  @override
-  State<DetailDescription> createState() => _DetailDescriptionState();
-}
-
-class _DetailDescriptionState extends State<DetailDescription> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -54,7 +59,7 @@ class _DetailDescriptionState extends State<DetailDescription> {
         Row(
           children: [
             Icon(Icons.location_on),
-            Text('Narok, Kenya'),
+            Text(destination.location),
             Spacer(),
             Icon(Icons.tour_rounded),
             Text('Guide provided'),
@@ -66,7 +71,7 @@ class _DetailDescriptionState extends State<DetailDescription> {
             Text('Vehicle Included'),
             Spacer(),
             Icon(Icons.money),
-            Text('\$196 per day'),
+            Text('\$${destination.pricePerDay}'),
           ],
         ),
         Text(
@@ -78,12 +83,18 @@ class _DetailDescriptionState extends State<DetailDescription> {
 }
 
 class _DetailsState extends State<Details> {
+  void _toggleBookmark() {
+    setState(() {
+      widget.destination.isBookmarked = !widget.destination.isBookmarked;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFD7F0FD),
       appBar: AppBar(
-        leading: Icon(Icons.menu),
+        // leading: Icon(Icons.menu),
         backgroundColor: const Color(0xFFD7F0FD),
       ),
       body: SafeArea(
@@ -92,9 +103,9 @@ class _DetailsState extends State<Details> {
             padding: EdgeInsets.all(16),
             child: Column(
               children: [
-                const DetailImages(),
+                DetailImages(destination: widget.destination, onBookmarkPressed: _toggleBookmark,),
                 SizedBox(height: 16),
-                const DetailDescription(),
+                DetailDescription(destination: widget.destination),
               ],
             ),
           ),
@@ -110,7 +121,7 @@ class _DetailsState extends State<Details> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Payments()),
+                MaterialPageRoute(builder: (context) => Payments( destination: widget.destination,)),
               );
             },
             style: ElevatedButton.styleFrom(

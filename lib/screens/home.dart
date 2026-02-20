@@ -62,7 +62,7 @@ class _SearchState extends State<Search> {
             IconButton(
               icon: Icon(Icons.search_sharp),
               onPressed: () {
-                // TODO: ADD SEARCH LOGIC/USE LISTENER ABOVE
+                // To be used when I start calling API's
               },
             ),
           ],
