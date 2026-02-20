@@ -5,18 +5,18 @@ A Flutter-based mobile application for discovering and booking travel destinatio
 WanderlustVentures helps users discover amazing travel destinations in Kenya and beyond. The app guides users through a complete booking flow from exploration to payment confirmation.
 
 ## Project Structure
-`
-lib/
-├── models/
-│   └── destination.dart           # Destination data model
-├── screens/
-│   ├── home.dart                   # Main screen with destination list
-│   ├── details.dart                 # Individual destination details
-│   ├── payments.dart                 # Payment method selection
-│   ├── payment_details.dart          # Payment form (card, M-Pesa, etc.)
-│   └── checkout.dart                 # Booking confirmation
-└── assets/
-    └── images/                       # Destination images `
+    `
+    lib/
+    ├── models/
+    │   └── destination.dart           # Destination data model
+    ├── screens/
+    │   ├── home.dart                   # Main screen with destination list
+    │   ├── details.dart                 # Individual destination details
+    │   ├── payments.dart                 # Payment method selection
+    │   ├── payment_details.dart          # Payment form (card, M-Pesa, etc.)
+    │   └── checkout.dart                 # Booking confirmation
+    └── assets/
+        └── images/                       # Destination images `
     
 ## Features Implemented
 1. Home Screen (home.dart)
