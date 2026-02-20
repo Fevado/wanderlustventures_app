@@ -23,6 +23,7 @@ A Flutter-based mobile application for discovering and booking travel destinatio
 WanderlustVentures helps users discover amazing travel destinations in Kenya and beyond. The app guides users through a complete booking flow from exploration to payment confirmation.
 
 ## Project Structure
+`
 lib/
 ├── models/
 │   └── destination.dart           # Destination data model
@@ -33,73 +34,74 @@ lib/
 │   ├── payment_details.dart          # Payment form (card, M-Pesa, etc.)
 │   └── checkout.dart                 # Booking confirmation
 └── assets/
-    └── images/                       # Destination images
+    └── images/                       # Destination images `
+    
 ## Features Implemented
 1. Home Screen (home.dart)
-Data-driven destination listing using ListView.builder
+  Data-driven destination listing using ListView.builder
 
-Reusable DestinationCard widget
+  Reusable DestinationCard widget
 
-Search functionality with real-time filtering
+  Search functionality with real-time filtering
 
-Bookmark/unbookmark destinations
+  Bookmark/unbookmark destinations
 
-Navigation to details screen with selected destination
+  Navigation to details screen with selected destination
 
 2. Details Screen (details.dart)
-Receives Destination object from home screen
+  Receives Destination object from home screen
 
-Displays destination images and descriptions
+  Displays destination images and descriptions
 
-Bookmark functionality with callback pattern
+  Bookmark functionality with callback pattern
 
-"Book Trip" button navigates to payments
+  "Book Trip" button navigates to payments
 
 3. Payments Screen (payments.dart)
-Receives selected destination from details
+  Receives selected destination from details
 
-Days selector (+ / - buttons) with minimum 1 day
+  Days selector (+ / - buttons) with minimum 1 day
 
-Real-time total price calculation (pricePerDay × days)
+  Real-time total price calculation (pricePerDay × days)
 
-Payment method selection (PayPal, Card, Crypto)
+  Payment method selection (PayPal, Card, Crypto)
 
-Visual feedback for selected payment method
+  Visual feedback for selected payment method
 
-Continue button appears only after method selection
+  Continue button appears only after method selection
 
-Passes complete data to payment details:
+  Passes complete data to payment details:
 
-Destination object
+  Destination object
 
-Selected payment method
+  Selected payment method
 
-Number of days
+  Number of days
 
-Total price
+  Total price
 
 4. Payment Details Screen (payment_details.dart)
-Conditional rendering based on payment method:
+  Conditional rendering based on payment method:
 
-CardDetails for credit/debit cards
+  CardDetails for credit/debit cards
 
-PayPalDetails for PayPal payments
+  PayPalDetails for PayPal payments
 
-CryptoDetails for cryptocurrency
+  CryptoDetails for cryptocurrency
 
-(M-Pesa ready for integration)
+  (M-Pesa ready for integration)
 
-All payment forms receive:
+  All payment forms receive:
 
-Destination information
+   Destination information
 
-Number of days
+   Number of days
 
-Total price
+   Total price
 
-No hardcoded values - all data passed from previous screens
+  No hardcoded values - all data passed from previous screens
 
-"Pay Now" button navigates to checkout with complete booking data
+  "Pay Now" button navigates to checkout with complete booking data
 
 5. Data Model (destination.dart)
 `
