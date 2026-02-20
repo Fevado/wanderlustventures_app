@@ -86,29 +86,29 @@ WanderlustVentures helps users discover amazing travel destinations in Kenya and
       "Pay Now" button navigates to checkout with complete booking data
 
 5. Data Model (destination.dart)
-`
-class Destination {
-  final String name;
-  final String imagePath;
-  final String description;
-  final String location;
-  final double pricePerDay;
-  bool isBookmarked;
-  
-  // Constructor with required fields
-} `
+6. 
+    `class Destination {
+      final String name;
+      final String imagePath;
+      final String description;
+      final String location;
+      final double pricePerDay;
+      bool isBookmarked;
+      
+      // Constructor with required fields
+    }
 
 ### Data Flow
-`
-Home Screen 
-    ↓ (selected destination)
-Details Screen
-    ↓ (destination + days + payment method)
-Payments Screen 
-    ↓ (destination + days + total + payment method)
-Payment Details Screen
-    ↓ (complete booking data)
-Checkout Screen `
+    `
+    Home Screen 
+        ↓ (selected destination)
+    Details Screen
+        ↓ (destination + days + payment method)
+    Payments Screen 
+        ↓ (destination + days + total + payment method)
+    Payment Details Screen
+        ↓ (complete booking data)
+    Checkout Screen `
 
 ### Key Concepts Learned
 1. State Management
@@ -152,53 +152,53 @@ Android Studio / VS Code
 iOS simulator or Android emulator
 
 Installation
-Clone the repository
-
-`bash
-git clone https://github.com/yourusername/wanderlustventures.git
-Navigate to project directory`
-
-`bash
-cd wanderlustventures
-Get dependencies`
-
-`bash
-flutter pub get
-Add destination images to assets/images/:
-nairobi.jpg
-maasai.jpg
-mombasa.jpg`
-
-`Update pubspec.yaml assets section:
-yaml
-flutter:
-  assets:
-    - assets/images/`
+    Clone the repository
     
-Run the app
-
-`bash
-flutter run`
-
-Sample Data Structure
-`
-List<Destination> destinations = [
-  Destination(
-    name: 'Nairobi',
-    imagePath: 'assets/images/nairobi.jpg',
-    description: 'A city of clean waters. Explore the vast surprises the beautiful city has to offer.',
-    location: 'Nairobi, Kenya',
-    pricePerDay: 150.0,
-  ),
-  Destination(
-    name: 'Maasai Mara',
-    imagePath: 'assets/images/maasai.jpg',
-    description: 'The beautiful Maa culture. Get to interact and learn about the Maa people.',
-    location: 'Narok, Kenya',
-    pricePerDay: 196.0,
-  ),
-  // Add more destinations...
-];`
+    `bash
+    git clone https://github.com/yourusername/wanderlustventures.git
+    Navigate to project directory`
+    
+    `bash
+    cd wanderlustventures
+    Get dependencies`
+    
+    `bash
+    flutter pub get
+    Add destination images to assets/images/:
+    nairobi.jpg
+    maasai.jpg
+    mombasa.jpg`
+    
+    `Update pubspec.yaml assets section:
+    yaml
+    flutter:
+      assets:
+        - assets/images/`
+        
+    Run the app
+    
+    `bash
+    flutter run`
+    
+    Sample Data Structure
+    `
+    List<Destination> destinations = [
+      Destination(
+        name: 'Nairobi',
+        imagePath: 'assets/images/nairobi.jpg',
+        description: 'A city of clean waters. Explore the vast surprises the beautiful city has to offer.',
+        location: 'Nairobi, Kenya',
+        pricePerDay: 150.0,
+      ),
+      Destination(
+        name: 'Maasai Mara',
+        imagePath: 'assets/images/maasai.jpg',
+        description: 'The beautiful Maa culture. Get to interact and learn about the Maa people.',
+        location: 'Narok, Kenya',
+        pricePerDay: 196.0,
+      ),
+      // Add more destinations...
+    ];`
 
 ### Testing the App
 Home Screen Testing
