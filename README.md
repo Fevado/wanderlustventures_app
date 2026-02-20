@@ -152,7 +152,8 @@ Android Studio / VS Code
 iOS simulator or Android emulator
 
 Installation
-    Clone the repository
+
+    ### Clone the repository
     
     `bash
     git clone https://github.com/yourusername/wanderlustventures.git
